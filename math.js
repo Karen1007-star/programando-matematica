@@ -12,6 +12,9 @@ function mediana(arrya){
         return arrya[Math.ceil((cantidad)/2-1)]
     }
 }
+// function prodcutos(obj) {
+//   return Object.entries(obj).map(([name, price])=>({name,price})) //destructuracion
+// }
 
 function moda(lista){
     const objLista = {}
