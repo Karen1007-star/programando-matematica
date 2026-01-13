@@ -54,9 +54,8 @@ function calculaPrecio(){
     // }else{
     //     p.innerText = 'No existe el cupón de descuento o ya expiró';
     // }
+    
 }
-
-
 
 // const inputPrice = document.querySelector('#price');
 // const inputDiscount = document.querySelector('#discount');

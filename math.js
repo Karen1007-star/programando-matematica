@@ -13,5 +13,15 @@ function mediana(arrya){
     }
 }
 
+function moda(lista){
+    const objLista = {}
+    lista.forEach(element => {
+        objLista[element] ? objLista[element] += 1 : objLista[element] = 1
+    });
+    const listArray=Object.entries(objLista)
+    return listArray.sort((a,b)=>a[1]-b[1])[listArray.length-1][0]
+}
+
+console.log(moda([1,2,3,4,5,4,4,4,4,4,5,5]))
 console.log(mediana([1,1,2,3,14,1,2,4,8]))
 console.log(mediana([3,2,1,0]))
