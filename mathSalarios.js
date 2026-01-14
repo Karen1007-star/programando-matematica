@@ -1,19 +1,20 @@
 let arrya =[]
-function promedio(arrya) {
-    return arrya.reduce((acum,valor)=>acum+valor,0)/arrya.length
-} 
+const mathSalarios ={}
+mathSalarios.promedio = function promedio(array1) {
+    if (!Array.isArray(array1) || array1.length === 0) return 0
+    return array1.reduce((acum, valor) => acum + valor, 0) / array1.length
+}
 
-function mediana(arrya){
+mathSalarios.mediana = function mediana(arrya){
     let cantidad=arrya.sort((a,b)=>a-b).length
     if(arrya.length % 2 == 0){
         return (arrya[(cantidad)/2-1] + arrya[(cantidad)/2])/2
     }else{
         return arrya[Math.ceil((cantidad)/2-1)]
     }
-}
-
+}   
     
-function moda(lista){
+mathSalarios.moda = function moda(lista){
         const objLista = {}
         lista.forEach(element => {
             objLista[element] ? objLista[element] += 1 : objLista[element] = 1
