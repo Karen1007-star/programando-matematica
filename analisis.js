@@ -51,7 +51,6 @@ function proyeccionSalarial(nombre){
         return trabajos[trabajos.length-1].salario + trabajos[trabajos.length-1].salario*crecioPromedio
 }
 
-
 function empresasOrdenadas(lista){
     const empresas = {}
     const nombres = []
@@ -68,7 +67,6 @@ function empresasOrdenadas(lista){
             empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
         })    
     });
-
     return Object.entries(empresas);
 }
 
@@ -76,4 +74,21 @@ function salariosEmpresariales(nombre,year){
     if(!empresas[nombre]) return "la empresa no existe"
     if(!empresas[nombre][year]) return "el año en esa empresa no existe"
     return mathSalarios.promedio(empresas[nombre][year])
+}
+
+function proyeccionSalarioEmpresa(nombre){
+    if(!empresas[nombre]) return "la empresa no existe"
+    const salariosEmpresa = Object.keys(empresas[nombre]).map((year)=>{
+        return salariosEmpresariales(nombre,year) 
+    })
+    const porcentajesCrecimientoE = []
+        for(let i=1; i<salariosEmpresa.length - 1; i++){
+            const salarioEmpresaActual = salariosEmpresa[i]
+            const salarioEmpresaPasado = salariosEmpresa[i-1]
+            const crecimiento = salarioEmpresaActual- salarioEmpresaPasado
+            const porceCrecimientoEmpresa = crecimiento / salarioEmpresaPasado
+            porcentajesCrecimientoE.push(porceCrecimientoEmpresa)
+        }
+    const crecioPromedio = mathSalarios.mediana(porcentajesCrecimientoE)
+    return salariosEmpresa[salariosEmpresa.length-1] + salariosEmpresa[salariosEmpresa.length-1]*crecioPromedio
 }
