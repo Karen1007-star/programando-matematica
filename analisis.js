@@ -71,3 +71,9 @@ function empresasOrdenadas(lista){
 
     return Object.entries(empresas);
 }
+
+function salariosEmpresariales(nombre,year){
+    if(!empresas[nombre]) return "la empresa no existe"
+    if(!empresas[nombre][year]) return "el año en esa empresa no existe"
+    return mathSalarios.promedio(empresas[nombre][year])
+}
